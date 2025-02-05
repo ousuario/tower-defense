@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://dt8cenjwhvcm"]
+[gd_scene load_steps=3 format=3 uid="uid://dt8cenjwhvcm"]
+
+[ext_resource type="PackedScene" uid="uid://dh8mkht0ob2qt" path="res://main_map.tscn" id="1_x26m7"]
+[ext_resource type="Script" path="res://EnemySpawn.gd" id="2_e8cfj"]
 
 [node name="Main" type="Node2D"]
+
+[node name="MainMap" parent="." instance=ExtResource("1_x26m7")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(288, 168)
+
+[node name="EnemySpawn" type="Node2D" parent="."]
+script = ExtResource("2_e8cfj")
+
+[node name="Timer" type="Timer" parent="EnemySpawn"]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="EnemySpawn/Timer" to="EnemySpawn" method="_on_timer_timeout"]

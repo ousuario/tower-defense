@@ -13,3 +13,13 @@ config_version=5
 config/name="Tower-defense"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=576
+window/size/viewport_height=336
+window/stretch/mode="viewport"
+
+[editor]
+
+movie_writer/movie_file="C:/Program Files (x86)/Godot/tower-defense/Demo/demovideo.avi"
