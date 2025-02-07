@@ -1,14 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://dt8cenjwhvcm"]
+[gd_scene load_steps=8 format=3 uid="uid://dt8cenjwhvcm"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_w8r3o"]
 [ext_resource type="PackedScene" uid="uid://dh8mkht0ob2qt" path="res://main_map.tscn" id="1_x26m7"]
 [ext_resource type="Script" path="res://EnemySpawn.gd" id="2_e8cfj"]
+[ext_resource type="PackedScene" uid="uid://qgcpafese0pi" path="res://path1.tscn" id="4_f6ytr"]
+[ext_resource type="PackedScene" uid="uid://d2ebctmgq7upx" path="res://player.tscn" id="4_wxytc"]
+[ext_resource type="PackedScene" uid="uid://dmppgdfcve5td" path="res://path_2.tscn" id="5_nftjf"]
+[ext_resource type="PackedScene" uid="uid://luxor50ydp3i" path="res://tower.tscn" id="7_qby8n"]
 
 [node name="Main" type="Node2D"]
-
-[node name="MainMap" parent="." instance=ExtResource("1_x26m7")]
+position = Vector2(-2, -1)
+script = ExtResource("1_w8r3o")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(288, 168)
+position = Vector2(290, 169)
+
+[node name="MainMap" parent="." instance=ExtResource("1_x26m7")]
+position = Vector2(2, 1)
+layer_0/z_index = 0
 
 [node name="EnemySpawn" type="Node2D" parent="."]
 script = ExtResource("2_e8cfj")
@@ -17,4 +26,30 @@ script = ExtResource("2_e8cfj")
 wait_time = 2.0
 autostart = true
 
+[node name="Path1" parent="EnemySpawn" instance=ExtResource("4_f6ytr")]
+
+[node name="path2" parent="EnemySpawn" instance=ExtResource("5_nftjf")]
+
+[node name="Player" parent="." instance=ExtResource("4_wxytc")]
+position = Vector2(554, 289)
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(2, 1)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("7_qby8n")]
+position = Vector2(301, 163)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("7_qby8n")]
+position = Vector2(429, 128)
+
+[node name="Tower" parent="." instance=ExtResource("7_qby8n")]
+position = Vector2(59, 83)
+
+[node name="Tower2" parent="." instance=ExtResource("7_qby8n")]
+position = Vector2(347, 209)
+
 [connection signal="timeout" from="EnemySpawn/Timer" to="EnemySpawn" method="_on_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="EnemySpawn" method="_on_start_timer_timeout"]

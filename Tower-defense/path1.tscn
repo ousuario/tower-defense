@@ -14,7 +14,6 @@ curve = SubResource("Curve2D_xykyh")
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 position = Vector2(3, 103)
 rotation = 0.0171412
-scale = Vector2(1, 1)
 loop = false
 
 [node name="Enemy1" parent="PathFollow2D" instance=ExtResource("1_52fpg")]

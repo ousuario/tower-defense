@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://cnj8bta70pao4"]
+
+[ext_resource type="Script" path="res://bullet.gd" id="1_7ep76"]
+[ext_resource type="Texture2D" uid="uid://da38ke14a4d15" path="res://fireball.png" id="1_xl3y3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rkbs8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8raa4"]
+atlas = ExtResource("1_xl3y3")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su67x"]
+atlas = ExtResource("1_xl3y3")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2snmi"]
+atlas = ExtResource("1_xl3y3")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjfma"]
+atlas = ExtResource("1_xl3y3")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgt81"]
+atlas = ExtResource("1_xl3y3")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8l6gx"]
+atlas = ExtResource("1_xl3y3")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jvvmi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8raa4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_su67x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2snmi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjfma")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgt81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8l6gx")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}]
+
+[node name="Bullet" type="Area2D" groups=["bullet"]]
+script = ExtResource("1_7ep76")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["bullet"]]
+shape = SubResource("CircleShape2D_rkbs8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_jvvmi")
+animation = &"die"
+autoplay = "default"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
