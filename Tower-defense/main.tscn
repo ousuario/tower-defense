@@ -1,25 +1,38 @@
-[gd_scene load_steps=8 format=3 uid="uid://dt8cenjwhvcm"]
+[gd_scene load_steps=21 format=3 uid="uid://dt8cenjwhvcm"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_w8r3o"]
-[ext_resource type="PackedScene" uid="uid://dh8mkht0ob2qt" path="res://main_map.tscn" id="1_x26m7"]
 [ext_resource type="Script" path="res://EnemySpawn.gd" id="2_e8cfj"]
+[ext_resource type="PackedScene" uid="uid://ukse5b7bnnx8" path="res://Map1.tscn" id="2_ltmjf"]
 [ext_resource type="PackedScene" uid="uid://qgcpafese0pi" path="res://path1.tscn" id="4_f6ytr"]
 [ext_resource type="PackedScene" uid="uid://d2ebctmgq7upx" path="res://player.tscn" id="4_wxytc"]
 [ext_resource type="PackedScene" uid="uid://dmppgdfcve5td" path="res://path_2.tscn" id="5_nftjf"]
-[ext_resource type="PackedScene" uid="uid://luxor50ydp3i" path="res://tower.tscn" id="7_qby8n"]
+[ext_resource type="Script" path="res://UI.gd" id="7_3h4pk"]
+[ext_resource type="Texture2D" uid="uid://cmb7sami1um06" path="res://UI/RedChosen.png" id="8_6wuh3"]
+[ext_resource type="Texture2D" uid="uid://di41n40qjahii" path="res://UI/Red.png" id="8_318cc"]
+[ext_resource type="Texture2D" uid="uid://bfkvymrue8b71" path="res://UI/Orange.png" id="8_y2li2"]
+[ext_resource type="Texture2D" uid="uid://cmu7rabyk5x7m" path="res://UI/RedIcon.png" id="10_bgcon"]
+[ext_resource type="Texture2D" uid="uid://ctueg4ye7vpnd" path="res://UI/Blue.png" id="11_liutn"]
+[ext_resource type="Texture2D" uid="uid://drpyxllo7foit" path="res://UI/OrangeIcon.png" id="11_mjs7q"]
+[ext_resource type="Texture2D" uid="uid://db2wkv3kr8tqh" path="res://UI/BlueIcon.png" id="12_edu5w"]
+[ext_resource type="Texture2D" uid="uid://tnjmv7kgcbjl" path="res://UI/OrangeChosen.png" id="12_pm6ci"]
+[ext_resource type="Texture2D" uid="uid://cp24ylscwldnn" path="res://UI/Purple.png" id="12_qspmg"]
+[ext_resource type="Texture2D" uid="uid://hl81td1v5prp" path="res://UI/PurpleIcon.png" id="13_nupin"]
+[ext_resource type="Texture2D" uid="uid://b2u8gnrautlb7" path="res://UI/BlueChosen.png" id="15_whesq"]
+[ext_resource type="Texture2D" uid="uid://6cvidbih3us0" path="res://UI/PurpleChosen.png" id="18_tqe7o"]
+[ext_resource type="PackedScene" uid="uid://diddv0geddfid" path="res://tower.tscn" id="20_a1tj0"]
 
 [node name="Main" type="Node2D"]
 position = Vector2(-2, -1)
 script = ExtResource("1_w8r3o")
 
+[node name="Map1" parent="." instance=ExtResource("2_ltmjf")]
+position = Vector2(2, 1)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(290, 169)
 
-[node name="MainMap" parent="." instance=ExtResource("1_x26m7")]
-position = Vector2(2, 1)
-layer_0/z_index = 0
-
 [node name="EnemySpawn" type="Node2D" parent="."]
+position = Vector2(1, 1)
 script = ExtResource("2_e8cfj")
 
 [node name="Timer" type="Timer" parent="EnemySpawn"]
@@ -39,17 +52,116 @@ wait_time = 5.0
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(2, 1)
 
-[node name="StaticBody2D" parent="." instance=ExtResource("7_qby8n")]
-position = Vector2(301, 163)
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("7_3h4pk")
 
-[node name="StaticBody2D2" parent="." instance=ExtResource("7_qby8n")]
-position = Vector2(429, 128)
+[node name="HUD" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 
-[node name="Tower" parent="." instance=ExtResource("7_qby8n")]
-position = Vector2(59, 83)
+[node name="BuildBar" type="HBoxContainer" parent="UI/HUD"]
+custom_minimum_size = Vector2(240, 24)
+layout_mode = 1
+offset_top = 24.0
+offset_right = 240.0
+offset_bottom = 48.0
+theme_override_constants/separation = 24
 
-[node name="Tower2" parent="." instance=ExtResource("7_qby8n")]
-position = Vector2(347, 209)
+[node name="Red" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("8_318cc")
+texture_hover = ExtResource("8_6wuh3")
+stretch_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="UI/HUD/BuildBar/Red"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_right = 24.0
+offset_bottom = 12.0
+grow_vertical = 2
+texture = ExtResource("10_bgcon")
+stretch_mode = 2
+
+[node name="Orange" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("8_y2li2")
+texture_hover = ExtResource("12_pm6ci")
+stretch_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="UI/HUD/BuildBar/Orange"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_right = 24.0
+offset_bottom = 12.0
+grow_vertical = 2
+texture = ExtResource("11_mjs7q")
+stretch_mode = 2
+
+[node name="Blue" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("11_liutn")
+texture_hover = ExtResource("15_whesq")
+stretch_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="UI/HUD/BuildBar/Blue"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_right = 24.0
+offset_bottom = 12.0
+grow_vertical = 2
+texture = ExtResource("12_edu5w")
+stretch_mode = 2
+
+[node name="Purple" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("12_qspmg")
+texture_hover = ExtResource("18_tqe7o")
+stretch_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="UI/HUD/BuildBar/Purple"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_right = 24.0
+offset_bottom = 12.0
+grow_vertical = 2
+texture = ExtResource("13_nupin")
+stretch_mode = 2
+
+[node name="Track" type="TileMap" parent="."]
+rendering_quadrant_size = 24
+format = 2
+
+[node name="tower" parent="." instance=ExtResource("20_a1tj0")]
 
 [connection signal="timeout" from="EnemySpawn/Timer" to="EnemySpawn" method="_on_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="EnemySpawn" method="_on_start_timer_timeout"]

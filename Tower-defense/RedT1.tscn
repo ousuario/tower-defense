@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://luxor50ydp3i"]
+
+[ext_resource type="Script" path="res://RedT1.gd" id="1_ouuxv"]
+[ext_resource type="Texture2D" uid="uid://desamat1cwb4t" path="res://Player.png" id="2_if7ps"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_st08m"]
+size = Vector2(24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glup7"]
+atlas = ExtResource("2_if7ps")
+region = Rect2(96, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpfvn"]
+atlas = ExtResource("2_if7ps")
+region = Rect2(120, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r13ds"]
+atlas = ExtResource("2_if7ps")
+region = Rect2(144, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7j4cn"]
+atlas = ExtResource("2_if7ps")
+region = Rect2(168, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f3s7w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glup7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpfvn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r13ds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7j4cn")
+}],
+"loop": true,
+"name": &"red1",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2vujv"]
+radius = 36.0
+
+[node name="RedT1" type="Node2D"]
+script = ExtResource("1_ouuxv")
+
+[node name="RedArea" type="Area2D" parent="." groups=["tower"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedArea"]
+shape = SubResource("RectangleShape2D_st08m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_f3s7w")
+animation = &"red1"
+autoplay = "red1"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_2vujv")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

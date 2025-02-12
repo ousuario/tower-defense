@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Node2D
 @onready var main = get_tree().get_root().get_node("main")
 
 @onready var BULLET = load("res://bullet.tscn")

@@ -1,0 +1,139 @@
+[gd_scene load_steps=8 format=3 uid="uid://dlh62c3s3d8ec"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_jk5lu"]
+[ext_resource type="Texture2D" uid="uid://ckta3vud2et3b" path="res://BG.png" id="1_t1e00"]
+[ext_resource type="Texture2D" uid="uid://da87lulpx4fps" path="res://UI/pkay.png" id="2_t528p"]
+[ext_resource type="Texture2D" uid="uid://bubc8ollnn27h" path="res://UI/pkayselected.png" id="3_8g7xx"]
+[ext_resource type="Texture2D" uid="uid://cfmnv2ja7noga" path="res://UI/pkayhover.png" id="4_3581l"]
+[ext_resource type="FontFile" uid="uid://catoy1ouq2ldc" path="res://UI/Gmaefont.ttf" id="5_2mlpv"]
+
+[sub_resource type="Theme" id="Theme_fgg6r"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_fgg6r")
+script = ExtResource("1_jk5lu")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_t1e00")
+
+[node name="M" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 50
+
+[node name="VB" type="VBoxContainer" parent="M"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="NewGame" type="TextureButton" parent="M/VB"]
+texture_filter = 1
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_t528p")
+texture_pressed = ExtResource("3_8g7xx")
+texture_hover = ExtResource("4_3581l")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="M/VB/NewGame"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_2mlpv")
+theme_override_font_sizes/font_size = 32
+text = "NEW GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Continue" type="TextureButton" parent="M/VB"]
+texture_filter = 1
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_t528p")
+texture_pressed = ExtResource("3_8g7xx")
+texture_hover = ExtResource("4_3581l")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="M/VB/Continue"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_2mlpv")
+theme_override_font_sizes/font_size = 32
+text = "CONTINUE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings" type="TextureButton" parent="M/VB"]
+texture_filter = 1
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_t528p")
+texture_pressed = ExtResource("3_8g7xx")
+texture_hover = ExtResource("4_3581l")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="M/VB/Settings"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_2mlpv")
+theme_override_font_sizes/font_size = 32
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitGame" type="TextureButton" parent="M/VB"]
+texture_filter = 1
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_t528p")
+texture_pressed = ExtResource("3_8g7xx")
+texture_hover = ExtResource("4_3581l")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="M/VB/QuitGame"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_2mlpv")
+theme_override_font_sizes/font_size = 32
+text = "QUIT GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="M/VB/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="M/VB/QuitGame" to="." method="_on_quit_game_pressed"]
