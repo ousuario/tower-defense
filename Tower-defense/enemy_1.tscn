@@ -82,7 +82,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pp6h3"]
 size = Vector2(24, 24)
 
-[node name="Enemy1" type="CharacterBody2D"]
+[node name="Enemy1" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_d1gca")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -91,7 +91,7 @@ shape = SubResource("RectangleShape2D_1xtwr")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_gd57p")
-animation = &"death"
+animation = &"pain"
 autoplay = "default"
 
 [node name="Area2D" type="Area2D" parent="." groups=["enemy"]]

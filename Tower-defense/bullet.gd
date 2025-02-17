@@ -3,7 +3,7 @@ var dir : float
 var spawnPos : Vector2
 var spawnRot : float
 @onready var ani = $AnimatedSprite2D
-var damage = 1
+var damage = 5
 
 
 
