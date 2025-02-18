@@ -11,28 +11,13 @@ var time = 2.0
 var cooldown = false
 var damage = 3
 var enemyIn = false
+var enemy =false
+
 
 func _on_cooldown_timer_timeout():
 	cooldown=false
 	
-func _physics_process(delta):
-	var overlaps = are.get_overlapping_areas()	
-	for object in overlaps: if object.is_in_group("enemy"):
-		if cooldown == false:
-				damageshape.set_deferred("disabled", false)
-				cooldown = true
-				print("attack")
-				cTimer.start()
-				ice.play("boom")
-				await get_tree().create_timer(0.4).timeout
-				damageshape.set_deferred("disabled", true)
-				ice.play("new_animation")
-		
-
-
-
-#func _on_area_2d_area_entered(area):
-	#if area.is_in_group("enemy"):
+#func _physics_process(delta):
 		#if cooldown == false:
 				#damageshape.set_deferred("disabled", false)
 				#cooldown = true
@@ -45,3 +30,28 @@ func _physics_process(delta):
 		#
 #
 
+
+func _on_area_2d_area_entered(area):
+	if area.is_in_group("enemy"):
+		if cooldown == false:
+				activate()
+		
+
+
+func activate():
+				print_debug(enemy)
+				enemy = true
+				damageshape.set_deferred("disabled", false)
+				cooldown = true
+				#print("attack")
+				cTimer.start()
+				ice.play("boom")
+				await get_tree().create_timer(0.4).timeout
+				damageshape.set_deferred("disabled", true)
+				ice.play("new_animation")
+				
+
+func _on_area_2d_area_exited(area):
+	if area.is_in_group("enemy"):
+		enemy = false
+		print_debug("LEFT")

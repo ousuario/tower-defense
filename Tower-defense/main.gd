@@ -8,18 +8,33 @@ var build_valid = false
 var build_location
 var build_type
 @onready var mapo = $Track
+@onready var score_label = $UI/HUD/NewGame/Label
+@onready var enemies_left_label = $UI/HUD/EnemiesLeft/EnemiesLeftLabel
+var enemybar = 5
+var score = ScoreTracker.enemies_killed
+var wave = 1
 
 
+func _physics_process(_delta):
+	if score != ScoreTracker.enemies_killed:
+		update_enemy_bar()
+	score = ScoreTracker.enemies_killed
+	score_label.text = "COINS  " + str(ScoreTracker.coins) 
+	enemies_left_label.text = "LEFT  " + str(enemybar)
+	var mouse_pos = get_global_mouse_position()
+	var tile_mouse_pos = mapo.local_to_map(mouse_pos)
+	
 
+func update_enemy_bar():
 
-#func _physics_process(_delta):
-	#
-	#var mouse_pos = get_global_mouse_position()
-	#var tile_mouse_pos = mapo.local_to_map(mouse_pos)
-#
-	#
-
-
+	enemybar = enemybar - 1
+	if enemybar <= 0 && wave == 1:
+		enemybar = 10
+		wave = 2
+	if enemybar <= 1 && wave == 2:	
+		enemybar = 100
+		wave = 3
+		
 
 func _ready():
 	map_node = get_node("Map1")

@@ -4,16 +4,17 @@
 
 [sub_resource type="Curve2D" id="Curve2D_xykyh"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 3, 103, 0, 0, 0, 0, 178, 106, 0, 0, 0, 0, 325, 106, 0, 0, 0, 0, 321, 205, 0, 0, 0, 0, 62, 205, 0, 0, 0, 0, 62, 300, 0, 0, 0, 0, 522, 301, 0, 0, 0, 0, 560, 302)
+"points": PackedVector2Array(0, 0, 0, 0, -27, 278, 0, 0, 0, 0, 216, 154, 0, 0, 0, 0, 385, 69, 0, 0, 0, 0, 454, 109, 0, 0, 0, 0, 187, 239, 0, 0, 0, 0, 312, 303, 0, 0, 0, 0, 433, 242, 0, 0, 0, 0, 514, 280, 0, 0, 0, 0, 552, 300, 0, 0, 0, 0, 606, 332)
 }
-point_count = 8
+point_count = 10
 
 [node name="Path1" type="Path2D"]
 curve = SubResource("Curve2D_xykyh")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2(3, 103)
-rotation = 0.0171412
+position = Vector2(-27, 278)
+rotation = -0.471844
+scale = Vector2(1, 1)
 loop = false
 
 [node name="Enemy1" parent="PathFollow2D" instance=ExtResource("1_52fpg")]

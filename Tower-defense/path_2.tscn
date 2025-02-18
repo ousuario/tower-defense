@@ -4,16 +4,16 @@
 
 [sub_resource type="Curve2D" id="Curve2D_qr5qe"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 575, 107, 0, 0, 0, 0, 325, 107, 0, 0, 0, 0, 325, 203, 0, 0, 0, 0, 59, 205, 0, 0, 0, 0, 58, 300, 0, 0, 0, 0, 563, 299)
+"points": PackedVector2Array(0, 0, 0, 0, 570, 53, 0, 0, 0, 0, 455, 109, 0, 0, 0, 0, 336, 170, 0, 0, 0, 0, 192, 237, 0, 0, 0, 0, 314, 299, 0, 0, 0, 0, 432, 241, 0, 0, 0, 0, 596, 322)
 }
-point_count = 6
+point_count = 7
 
 [node name="path2" type="Path2D"]
 curve = SubResource("Curve2D_qr5qe")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2(575, 107)
-rotation = 3.14159
+position = Vector2(570, 53)
+rotation = 2.68843
 loop = false
 
 [node name="Enemy1" parent="PathFollow2D" instance=ExtResource("1_ja65k")]

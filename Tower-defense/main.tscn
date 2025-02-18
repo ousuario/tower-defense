@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dt8cenjwhvcm"]
+[gd_scene load_steps=25 format=3 uid="uid://dt8cenjwhvcm"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_w8r3o"]
 [ext_resource type="Script" path="res://EnemySpawn.gd" id="2_e8cfj"]
@@ -19,7 +19,11 @@
 [ext_resource type="Texture2D" uid="uid://hl81td1v5prp" path="res://UI/PurpleIcon.png" id="13_nupin"]
 [ext_resource type="Texture2D" uid="uid://b2u8gnrautlb7" path="res://UI/BlueChosen.png" id="15_whesq"]
 [ext_resource type="Texture2D" uid="uid://6cvidbih3us0" path="res://UI/PurpleChosen.png" id="18_tqe7o"]
+[ext_resource type="Texture2D" uid="uid://da87lulpx4fps" path="res://UI/pkay.png" id="20_8neie"]
 [ext_resource type="PackedScene" uid="uid://diddv0geddfid" path="res://tower.tscn" id="20_a1tj0"]
+[ext_resource type="Texture2D" uid="uid://bubc8ollnn27h" path="res://UI/pkayselected.png" id="21_x0qod"]
+[ext_resource type="Texture2D" uid="uid://cfmnv2ja7noga" path="res://UI/pkayhover.png" id="22_5jtef"]
+[ext_resource type="FontFile" uid="uid://catoy1ouq2ldc" path="res://UI/Gmaefont.ttf" id="23_tadwr"]
 
 [node name="Main" type="Node2D"]
 position = Vector2(-2, -1)
@@ -45,9 +49,6 @@ autostart = true
 
 [node name="Player" parent="." instance=ExtResource("4_wxytc")]
 position = Vector2(554, 289)
-
-[node name="StartTimer" type="Timer" parent="."]
-wait_time = 5.0
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(2, 1)
@@ -157,6 +158,63 @@ grow_vertical = 2
 texture = ExtResource("13_nupin")
 stretch_mode = 2
 
+[node name="NewGame" type="TextureButton" parent="UI/HUD"]
+texture_filter = 1
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -150.0
+offset_bottom = 30.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+texture_normal = ExtResource("20_8neie")
+texture_pressed = ExtResource("21_x0qod")
+texture_hover = ExtResource("22_5jtef")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/HUD/NewGame"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("23_tadwr")
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnemiesLeft" type="TextureButton" parent="UI/HUD"]
+texture_filter = 1
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -150.0
+offset_top = 36.0
+offset_bottom = 66.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+texture_normal = ExtResource("20_8neie")
+texture_pressed = ExtResource("21_x0qod")
+texture_hover = ExtResource("22_5jtef")
+stretch_mode = 0
+
+[node name="EnemiesLeftLabel" type="Label" parent="UI/HUD/EnemiesLeft"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("23_tadwr")
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Track" type="TileMap" parent="."]
 rendering_quadrant_size = 24
 format = 2
@@ -164,4 +222,3 @@ format = 2
 [node name="tower" parent="." instance=ExtResource("20_a1tj0")]
 
 [connection signal="timeout" from="EnemySpawn/Timer" to="EnemySpawn" method="_on_timer_timeout"]
-[connection signal="timeout" from="StartTimer" to="EnemySpawn" method="_on_start_timer_timeout"]
