@@ -1,0 +1,115 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7glc3sg56csw"]
+
+[ext_resource type="Script" path="res://Pause.gd" id="1_suigk"]
+[ext_resource type="Texture2D" uid="uid://ckta3vud2et3b" path="res://BG.png" id="2_meiiy"]
+[ext_resource type="Texture2D" uid="uid://da87lulpx4fps" path="res://UI/pkay.png" id="3_p75gm"]
+[ext_resource type="Texture2D" uid="uid://bubc8ollnn27h" path="res://UI/pkayselected.png" id="4_hw41g"]
+[ext_resource type="Texture2D" uid="uid://cfmnv2ja7noga" path="res://UI/pkayhover.png" id="5_rcffa"]
+[ext_resource type="FontFile" uid="uid://catoy1ouq2ldc" path="res://UI/Gmaefont.ttf" id="6_pdfys"]
+
+[node name="Pause" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_suigk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.764706)
+layout_mode = 0
+offset_left = -18.0
+offset_top = -15.0
+offset_right = 596.0
+offset_bottom = 347.0
+texture = ExtResource("2_meiiy")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Resume" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+process_mode = 3
+texture_filter = 1
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_p75gm")
+texture_pressed = ExtResource("4_hw41g")
+texture_hover = ExtResource("5_rcffa")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Resume"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_pdfys")
+theme_override_font_sizes/font_size = 32
+text = "RESUME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenu" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+process_mode = 3
+texture_filter = 1
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_p75gm")
+texture_pressed = ExtResource("4_hw41g")
+texture_hover = ExtResource("5_rcffa")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MainMenu"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_pdfys")
+theme_override_font_sizes/font_size = 32
+text = "MAIN MENU"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitGame2" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+process_mode = 3
+texture_filter = 1
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_p75gm")
+texture_pressed = ExtResource("4_hw41g")
+texture_hover = ExtResource("5_rcffa")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/QuitGame2"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_pdfys")
+theme_override_font_sizes/font_size = 32
+text = "QUIT GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitGame2" to="." method="_on_quit_game_2_pressed"]

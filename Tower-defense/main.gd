@@ -13,11 +13,21 @@ var build_type
 var enemybar = 5
 var score = ScoreTracker.enemies_killed
 var wave = 1
+@onready var life = $UI/HUD/Health/Label
+@onready var player = $Player
+var hp
+var paused = false
+@onready var pause = $UI/Pause
+
 
 
 func _physics_process(_delta):
+	hp = player.health
 	if score != ScoreTracker.enemies_killed:
 		update_enemy_bar()
+	life.text = "HP" + str(hp)	
+	if hp <= 0:
+		game_over()
 	score = ScoreTracker.enemies_killed
 	score_label.text = "COINS  " + str(ScoreTracker.coins) 
 	enemies_left_label.text = "LEFT  " + str(enemybar)
@@ -37,6 +47,7 @@ func update_enemy_bar():
 		
 
 func _ready():
+	print("start")
 	map_node = get_node("Map1")
 	tower_node = get_node("tower")
 	for i in get_tree().get_nodes_in_group("build_buttons"):
@@ -61,10 +72,21 @@ func get_command():
 		cancel_build_mode()
 
 func _process(delta):
+	if Input.is_action_just_pressed("Escape"):
+		pause.pause_menu()
 	if build_mode:
 		update_tower_preview()
 		get_command()
-		
+	
+#func pause_menu():
+	#if paused == false:
+		#get_tree().paused =  true
+		#pause.show()
+	#if paused == true:
+		#get_tree().paused = false 
+		#pause.hide()
+	#paused = !paused	
+			#
 func initiate_build_mode(tower_type):
 	#if build_mode: CAN be used to fix my clone issue
 		#return
@@ -108,5 +130,8 @@ func verify_and_build():
 		tower_node.add_child(new_tower, true)
 		
 			
+func game_over():
 	
-
+		var game_scene = load("res://game_over.tscn").instantiate()
+		add_child(game_scene)
+		queue_free()

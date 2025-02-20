@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dt8cenjwhvcm"]
+[gd_scene load_steps=26 format=3 uid="uid://dt8cenjwhvcm"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_w8r3o"]
 [ext_resource type="Script" path="res://EnemySpawn.gd" id="2_e8cfj"]
@@ -24,39 +24,51 @@
 [ext_resource type="Texture2D" uid="uid://bubc8ollnn27h" path="res://UI/pkayselected.png" id="21_x0qod"]
 [ext_resource type="Texture2D" uid="uid://cfmnv2ja7noga" path="res://UI/pkayhover.png" id="22_5jtef"]
 [ext_resource type="FontFile" uid="uid://catoy1ouq2ldc" path="res://UI/Gmaefont.ttf" id="23_tadwr"]
+[ext_resource type="PackedScene" uid="uid://b7glc3sg56csw" path="res://pause.tscn" id="25_lxpoe"]
 
 [node name="Main" type="Node2D"]
+process_mode = 3
 position = Vector2(-2, -1)
 script = ExtResource("1_w8r3o")
 
 [node name="Map1" parent="." instance=ExtResource("2_ltmjf")]
+process_mode = 1
 position = Vector2(2, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 1
 position = Vector2(290, 169)
 
 [node name="EnemySpawn" type="Node2D" parent="."]
+process_mode = 1
 position = Vector2(1, 1)
 script = ExtResource("2_e8cfj")
 
 [node name="Timer" type="Timer" parent="EnemySpawn"]
+process_mode = 1
 wait_time = 2.0
 autostart = true
 
 [node name="Path1" parent="EnemySpawn" instance=ExtResource("4_f6ytr")]
+process_mode = 1
 
 [node name="path2" parent="EnemySpawn" instance=ExtResource("5_nftjf")]
+process_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("4_wxytc")]
+process_mode = 1
 position = Vector2(554, 289)
 
 [node name="Node2D" type="Node2D" parent="."]
+process_mode = 1
 position = Vector2(2, 1)
 
 [node name="UI" type="CanvasLayer" parent="."]
+process_mode = 1
 script = ExtResource("7_3h4pk")
 
 [node name="HUD" type="Control" parent="UI"]
+process_mode = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -67,6 +79,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 
 [node name="BuildBar" type="HBoxContainer" parent="UI/HUD"]
+process_mode = 1
 custom_minimum_size = Vector2(240, 24)
 layout_mode = 1
 offset_top = 24.0
@@ -75,6 +88,7 @@ offset_bottom = 48.0
 theme_override_constants/separation = 24
 
 [node name="Red" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+process_mode = 1
 texture_filter = 1
 clip_contents = true
 custom_minimum_size = Vector2(24, 24)
@@ -84,6 +98,7 @@ texture_hover = ExtResource("8_6wuh3")
 stretch_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="UI/HUD/BuildBar/Red"]
+process_mode = 1
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -96,6 +111,7 @@ texture = ExtResource("10_bgcon")
 stretch_mode = 2
 
 [node name="Orange" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+process_mode = 1
 texture_filter = 1
 clip_contents = true
 custom_minimum_size = Vector2(24, 24)
@@ -105,6 +121,7 @@ texture_hover = ExtResource("12_pm6ci")
 stretch_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="UI/HUD/BuildBar/Orange"]
+process_mode = 1
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -117,6 +134,7 @@ texture = ExtResource("11_mjs7q")
 stretch_mode = 2
 
 [node name="Blue" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+process_mode = 1
 texture_filter = 1
 clip_contents = true
 custom_minimum_size = Vector2(24, 24)
@@ -126,6 +144,7 @@ texture_hover = ExtResource("15_whesq")
 stretch_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="UI/HUD/BuildBar/Blue"]
+process_mode = 1
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -138,6 +157,7 @@ texture = ExtResource("12_edu5w")
 stretch_mode = 2
 
 [node name="Purple" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+process_mode = 1
 texture_filter = 1
 clip_contents = true
 custom_minimum_size = Vector2(24, 24)
@@ -147,6 +167,7 @@ texture_hover = ExtResource("18_tqe7o")
 stretch_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="UI/HUD/BuildBar/Purple"]
+process_mode = 1
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -159,6 +180,7 @@ texture = ExtResource("13_nupin")
 stretch_mode = 2
 
 [node name="NewGame" type="TextureButton" parent="UI/HUD"]
+process_mode = 1
 texture_filter = 1
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 1
@@ -175,6 +197,7 @@ texture_hover = ExtResource("22_5jtef")
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="UI/HUD/NewGame"]
+process_mode = 1
 texture_filter = 1
 layout_mode = 0
 offset_right = 150.0
@@ -187,6 +210,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="EnemiesLeft" type="TextureButton" parent="UI/HUD"]
+process_mode = 1
 texture_filter = 1
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 1
@@ -204,6 +228,7 @@ texture_hover = ExtResource("22_5jtef")
 stretch_mode = 0
 
 [node name="EnemiesLeftLabel" type="Label" parent="UI/HUD/EnemiesLeft"]
+process_mode = 1
 texture_filter = 1
 layout_mode = 0
 offset_right = 150.0
@@ -215,10 +240,50 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Health" type="TextureButton" parent="UI/HUD"]
+process_mode = 1
+texture_filter = 1
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -314.0
+offset_right = -164.0
+offset_bottom = 30.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+texture_normal = ExtResource("20_8neie")
+texture_pressed = ExtResource("21_x0qod")
+texture_hover = ExtResource("22_5jtef")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/HUD/Health"]
+process_mode = 1
+texture_filter = 1
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("23_tadwr")
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pause" parent="UI" instance=ExtResource("25_lxpoe")]
+visible = false
+offset_left = -2.0
+offset_top = -1.0
+offset_right = -2.0
+offset_bottom = -1.0
+
 [node name="Track" type="TileMap" parent="."]
+process_mode = 1
 rendering_quadrant_size = 24
 format = 2
 
 [node name="tower" parent="." instance=ExtResource("20_a1tj0")]
+process_mode = 1
 
 [connection signal="timeout" from="EnemySpawn/Timer" to="EnemySpawn" method="_on_timer_timeout"]
