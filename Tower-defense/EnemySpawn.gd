@@ -14,7 +14,6 @@ var count
 func _on_timer_timeout():
 	count = ScoreTracker.coins
 	var num = rng.randf_range(1, 10)
-	print(count)
 	if num >= 6:
 		var fauxpath = path.instantiate()
 		add_child(fauxpath)

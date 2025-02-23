@@ -3,55 +3,29 @@ extends Node2D
 @onready var main = get_tree().get_root().get_node("main")
 @onready var d_area = $DamageArea
 @onready var damageshape = $DamageArea/DamageShape
-@onready var are = $Area2D
-
-
+@onready var area = $Area2D
+@onready var ICE = load("res://ice_blast.tscn")
+var built = false
 var time = 2.0
 @onready var cTimer = $CooldownTimer
 var cooldown = false
 var damage = 3
 var enemyIn = false
 var enemy =false
-
+var price = 6
 
 func _on_cooldown_timer_timeout():
 	cooldown=false
-	
-#func _physics_process(delta):
-		#if cooldown == false:
-				#damageshape.set_deferred("disabled", false)
-				#cooldown = true
-				#print("attack")
-				#cTimer.start()
-				#ice.play("boom")
-				#await get_tree().create_timer(0.4).timeout
-				#damageshape.set_deferred("disabled", true)
-				#ice.play("new_animation")
-		#
-#
-
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("enemy"):
 		if cooldown == false:
-				activate()
-		
+			cooldown = true
+			cTimer.start()
+			var ice = ICE.instantiate()
+			ice.spawnPos =area.global_position
+			add_child(ice)
 
-
-func activate():
-				print_debug(enemy)
-				enemy = true
-				damageshape.set_deferred("disabled", false)
-				cooldown = true
-				#print("attack")
-				cTimer.start()
-				ice.play("boom")
-				await get_tree().create_timer(0.4).timeout
-				damageshape.set_deferred("disabled", true)
-				ice.play("new_animation")
-				
 
 func _on_area_2d_area_exited(area):
-	if area.is_in_group("enemy"):
-		enemy = false
-		print_debug("LEFT")
+	pass # Replace with function body.

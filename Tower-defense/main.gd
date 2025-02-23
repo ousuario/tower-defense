@@ -18,23 +18,27 @@ var wave = 1
 var hp
 var paused = false
 @onready var pause = $UI/Pause
-
+var built = false
+var coins = 10
 
 
 func _physics_process(_delta):
 	hp = player.health
 	if score != ScoreTracker.enemies_killed:
+		update_money()
 		update_enemy_bar()
 	life.text = "HP" + str(hp)	
 	if hp <= 0:
 		game_over()
 	score = ScoreTracker.enemies_killed
-	score_label.text = "COINS  " + str(ScoreTracker.coins) 
+	score_label.text = "COINS  " + str(coins )
 	enemies_left_label.text = "LEFT  " + str(enemybar)
 	var mouse_pos = get_global_mouse_position()
 	var tile_mouse_pos = mapo.local_to_map(mouse_pos)
 	
-
+func update_money():
+	coins = coins +1
+	
 func update_enemy_bar():
 
 	enemybar = enemybar - 1
@@ -47,23 +51,13 @@ func update_enemy_bar():
 		
 
 func _ready():
-	print("start")
+	coins 
 	map_node = get_node("Map1")
 	tower_node = get_node("tower")
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.pressed.connect(initiate_build_mode.bind(i.name))
 		
 
-#func _unhandled_input(event):
-	#if event.is_action_released("ui_cancel") and build_mode == true:
-		#print("Cancel")
-		#cancel_build_mode()
-	#if event.is_action_released("ui_accept") and build_mode == true:
-		#print("Accept")
-		#verify_and_build()
-		#cancel_build_mode()
-		#
-		
 func get_command():
 	if  Input.is_action_just_pressed("ui_cancel") and build_mode == true:
 		cancel_build_mode()
@@ -91,8 +85,14 @@ func initiate_build_mode(tower_type):
 	#if build_mode: CAN be used to fix my clone issue
 		#return
 	build_type = tower_type + "T1"
-	build_mode = true
-	get_node("UI").set_tower_preview(build_type,get_global_mouse_position())
+	var check_tower = load("res://" + build_type + ".tscn").instantiate()
+	if check_tower.price> coins:
+		print("moneyno")
+		
+	else:
+		print("moneyyes")	
+		build_mode = true
+		get_node("UI").set_tower_preview(build_type,get_global_mouse_position())
 	#ok
 	
 
@@ -128,6 +128,10 @@ func verify_and_build():
 		new_tower.position.x = new_tower.position.x+2
 		new_tower.position.y = new_tower.position.y+1
 		tower_node.add_child(new_tower, true)
+		#new_tower.area.hide()
+		new_tower.built = true
+		coins = coins - new_tower.price
+		
 		
 			
 func game_over():

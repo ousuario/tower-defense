@@ -1,17 +1,16 @@
 extends CanvasLayer
+const MAIN = preload("res://main.tscn")
 
-
-func set_tower_preview(tower_type, mouse_position):
-
-	var drag_tower = load("res://" + tower_type +".tscn").instantiate()
-	drag_tower.set_name("DragTower")
-	drag_tower.modulate = Color("c200c461")
-	var control = Control.new()
-	control.add_child(drag_tower, true)
-	control.set_position(mouse_position)
-	control.set_name("TowerPreview")
-	add_child(control, true)
-	move_child(get_node("TowerPreview"), 0)
+func set_tower_preview(tower_type, mouse_position):	
+		var drag_tower = load("res://" + tower_type +".tscn").instantiate()
+		drag_tower.set_name("DragTower")
+		drag_tower.modulate = Color("c200c461")
+		var control = Control.new()
+		control.add_child(drag_tower, true)
+		control.set_position(mouse_position)
+		control.set_name("TowerPreview")
+		add_child(control, true)
+		move_child(get_node("TowerPreview"), 0)
 
 
 func update_tower_preview(new_position, color):

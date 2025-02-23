@@ -90,9 +90,10 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_kuccw")
 animation = &"blue1"
 autoplay = "blue1"
-frame_progress = 0.856717
+frame_progress = 0.138814
 
 [node name="Ice" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_jmv72")
 animation = &"new_animation"
 autoplay = "new_animation"
@@ -103,9 +104,10 @@ autoplay = "new_animation"
 shape = SubResource("CircleShape2D_2vujv")
 
 [node name="CooldownTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 
 [node name="DamageArea" type="Area2D" parent="." groups=["ice"]]
+visible = false
 
 [node name="DamageShape" type="CollisionShape2D" parent="DamageArea" groups=["ice"]]
 shape = SubResource("CircleShape2D_xpw21")

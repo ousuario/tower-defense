@@ -43,7 +43,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2vujv"]
-radius = 36.0
+radius = 120.0
 
 [node name="RedT1" type="Node2D"]
 script = ExtResource("1_ouuxv")
@@ -65,7 +65,9 @@ autoplay = "red1"
 shape = SubResource("CircleShape2D_2vujv")
 
 [node name="CooldownTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 0.5
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://byejxgqhjqcpd"]
+
+[ext_resource type="Script" path="res://IceBlast.gd" id="1_vuw41"]
+[ext_resource type="Texture2D" uid="uid://csgjj722nmy8q" path="res://ice.png" id="2_p0unm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eymg5"]
+radius = 36.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mm20b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_p0unm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_p0unm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_p0unm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_p0unm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_p0unm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_p0unm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_p0unm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_p0unm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_p0unm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_p0unm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_p0unm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_p0unm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="IceBlast" type="Area2D" groups=["ice"]]
+script = ExtResource("1_vuw41")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["ice"]]
+shape = SubResource("CircleShape2D_eymg5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_mm20b")
+autoplay = "default"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

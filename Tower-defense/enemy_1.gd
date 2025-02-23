@@ -4,6 +4,7 @@ var health = 10
 @onready var an = $AnimatedSprite2D
 var dead = false
 var point = 5
+@onready var area = $Area2D
 
 
 func _process(delta):
@@ -20,11 +21,15 @@ func _on_area_2d_area_entered(area):
 		var damage = area.damage
 		hurt(damage)
 	if area.is_in_group("ice"):
+		var fast = speed
 		speed = 50
-		await get_tree().create_timer(2.0).timeout
-		var damage = area.get_parent().damage
+		var damage = area.damage
 		hurt(damage)
-		print("ICE", damage)
+		await get_tree().create_timer(2.0).timeout
+		speed = fast
+		
+		
+		
 		
 func hurt(damage):
 	health= health - damage
@@ -33,14 +38,17 @@ func hurt(damage):
 		await get_tree().create_timer(0.4).timeout
 		
 	if	health <= 0:
+		die()
+	if dead == false:	
+		an.play("default")	
+
+func die():
 			dead = true
 			speed = 0
 			an.play("death")
 			await get_tree().create_timer(0.6).timeout
 			score()
 			queue_free()
-	if dead == false:	
-			an.play("default")	
 
 
 
@@ -55,6 +63,3 @@ func score():
 	ScoreTracker.score = ScoreTracker.score+1
 	
 	
-func _on_hit_box_area_shape_entered(area):
-	if area.is_in_group("bullet"):
-		print("pain")
