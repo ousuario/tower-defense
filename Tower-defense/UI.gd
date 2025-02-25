@@ -1,5 +1,4 @@
 extends CanvasLayer
-const MAIN = preload("res://main.tscn")
 
 func set_tower_preview(tower_type, mouse_position):	
 		var drag_tower = load("res://" + tower_type +".tscn").instantiate()

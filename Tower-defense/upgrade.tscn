@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxt7tvd2ty4ew"]
+
+[ext_resource type="Texture2D" uid="uid://da87lulpx4fps" path="res://UI/pkay.png" id="1_ihvas"]
+[ext_resource type="Texture2D" uid="uid://bubc8ollnn27h" path="res://UI/pkayselected.png" id="2_b8s3q"]
+[ext_resource type="Texture2D" uid="uid://cfmnv2ja7noga" path="res://UI/pkayhover.png" id="3_cliay"]
+
+[node name="Upgrade" type="Node2D"]
+
+[node name="Ubutton" type="TextureButton" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_ihvas")
+texture_pressed = ExtResource("2_b8s3q")
+texture_hover = ExtResource("3_cliay")

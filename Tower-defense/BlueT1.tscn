@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://du5ui1tap735"]
+[gd_scene load_steps=11 format=3 uid="uid://du5ui1tap735"]
 
 [ext_resource type="Script" path="res://BlueT1.gd" id="1_ouvu7"]
 [ext_resource type="Texture2D" uid="uid://desamat1cwb4t" path="res://Player.png" id="2_sjx8e"]
-[ext_resource type="Texture2D" uid="uid://csgjj722nmy8q" path="res://ice.png" id="3_27ac8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w5oqg"]
 size = Vector2(24, 24)
@@ -43,33 +42,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_votyp"]
-atlas = ExtResource("3_27ac8")
-region = Rect2(0, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3aavr"]
-atlas = ExtResource("2_sjx8e")
-region = Rect2(216, 120, 24, 24)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_jmv72"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_votyp")
-}],
-"loop": true,
-"name": &"boom",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3aavr")
-}],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
-}]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_2vujv"]
 radius = 36.0
 
@@ -91,12 +63,6 @@ sprite_frames = SubResource("SpriteFrames_kuccw")
 animation = &"blue1"
 autoplay = "blue1"
 frame_progress = 0.138814
-
-[node name="Ice" type="AnimatedSprite2D" parent="."]
-visible = false
-sprite_frames = SubResource("SpriteFrames_jmv72")
-animation = &"new_animation"
-autoplay = "new_animation"
 
 [node name="Area2D" type="Area2D" parent="."]
 

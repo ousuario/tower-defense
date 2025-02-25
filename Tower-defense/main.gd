@@ -22,6 +22,7 @@ var built = false
 var coins = 10
 
 
+
 func _physics_process(_delta):
 	hp = player.health
 	if score != ScoreTracker.enemies_killed:
@@ -39,6 +40,7 @@ func _physics_process(_delta):
 func update_money():
 	coins = coins +1
 	
+
 func update_enemy_bar():
 
 	enemybar = enemybar - 1
@@ -131,6 +133,8 @@ func verify_and_build():
 		#new_tower.area.hide()
 		new_tower.built = true
 		coins = coins - new_tower.price
+		var butt = load("res://upgrade.tscn").instantiate()
+		
 		
 		
 			

@@ -14,11 +14,12 @@ var enemyIn = false
 var enemy =false
 var price = 6
 
+
 func _on_cooldown_timer_timeout():
 	cooldown=false
 
 func _on_area_2d_area_entered(area):
-	if area.is_in_group("enemy"):
+	if area.is_in_group("enemy") && built ==true:
 		if cooldown == false:
 			cooldown = true
 			cTimer.start()

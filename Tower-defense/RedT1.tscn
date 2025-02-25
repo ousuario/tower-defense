@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://luxor50ydp3i"]
+[gd_scene load_steps=12 format=3 uid="uid://luxor50ydp3i"]
 
 [ext_resource type="Script" path="res://RedT1.gd" id="1_ouuxv"]
 [ext_resource type="Texture2D" uid="uid://desamat1cwb4t" path="res://Player.png" id="2_if7ps"]
+[ext_resource type="Texture2D" uid="uid://da87lulpx4fps" path="res://UI/pkay.png" id="3_e7j33"]
+[ext_resource type="Texture2D" uid="uid://bubc8ollnn27h" path="res://UI/pkayselected.png" id="4_nyo6n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_st08m"]
 size = Vector2(24, 24)
@@ -67,7 +69,17 @@ shape = SubResource("CircleShape2D_2vujv")
 [node name="CooldownTimer" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = -23.0
+offset_top = -5.0
+offset_right = 27.0
+offset_bottom = 19.0
+texture_normal = ExtResource("3_e7j33")
+texture_pressed = ExtResource("4_nyo6n")
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

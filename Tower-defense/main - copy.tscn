@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dt8cenjwhvcm"]
+[gd_scene load_steps=26 format=3 uid="uid://8qyafmutsryq"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_w8r3o"]
 [ext_resource type="Script" path="res://EnemySpawn.gd" id="2_e8cfj"]
@@ -73,7 +73,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -224.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 8
@@ -285,5 +284,6 @@ rendering_quadrant_size = 24
 format = 2
 
 [node name="tower" parent="." instance=ExtResource("20_a1tj0")]
+process_mode = 1
 
 [connection signal="timeout" from="EnemySpawn/Timer" to="EnemySpawn" method="_on_timer_timeout"]

@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://bgy8six60ln3m"]
+
+[ext_resource type="Script" path="res://OrangeT1.gd" id="1_8fbgj"]
+[ext_resource type="Texture2D" uid="uid://cj7l1iif0kawb" path="res://Player1.png" id="1_oclnm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wf0xk"]
+size = Vector2(24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16ldc"]
+atlas = ExtResource("1_oclnm")
+region = Rect2(96, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7p6o5"]
+atlas = ExtResource("1_oclnm")
+region = Rect2(120, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mcr2"]
+atlas = ExtResource("1_oclnm")
+region = Rect2(144, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgxxx"]
+atlas = ExtResource("1_oclnm")
+region = Rect2(168, 48, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dyxnn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16ldc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7p6o5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mcr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgxxx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="OrangeT1" type="Node2D"]
+script = ExtResource("1_8fbgj")
+
+[node name="OrangeArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrangeArea"]
+position = Vector2(2.38419e-07, 0)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_wf0xk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_dyxnn")
+autoplay = "default"
+
+[node name="CooldownTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
