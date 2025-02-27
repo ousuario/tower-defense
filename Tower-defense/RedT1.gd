@@ -11,6 +11,8 @@ var enemy
 var enemy_alive = false
 var price = 5
 var upgradeable = false
+var upgrade1 = false
+var upgrade2 = false
 
 func _physics_process(delta):
 	if enemy_array.size() != 0 && built == true:
@@ -36,6 +38,11 @@ func shoot():
 		bullet.spawnPos = enemy.global_position
 		add_child(bullet)
 		bullet.direction = direction
+		if upgrade1==true:
+			bullet.damage = bullet.damage + 2
+		if upgrade2==true:
+			bullet.damage = bullet.damage + 5
+		print(bullet.damage)	
 		
 		
 #func select_enemy():
@@ -79,17 +86,15 @@ func _on_area_2d_body_entered(body):
 		
 
 
-
-
 func _on_area_2d_body_exited(body):
 	if body.is_in_group("enemy") && built == true:
 		kill()
 		
 
 
-
-
-
-
 func _on_texture_button_pressed():
-	print("bug")
+	
+	if upgrade2 == true && upgrade1== true:
+		pass
+	else:
+		$Upgrade.show()	

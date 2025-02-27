@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://du5ui1tap735"]
+[gd_scene load_steps=13 format=3 uid="uid://du5ui1tap735"]
 
 [ext_resource type="Script" path="res://BlueT1.gd" id="1_ouvu7"]
 [ext_resource type="Texture2D" uid="uid://desamat1cwb4t" path="res://Player.png" id="2_sjx8e"]
+[ext_resource type="Texture2D" uid="uid://by7sr8uk3t7uo" path="res://eh.png" id="3_0be8t"]
+[ext_resource type="PackedScene" uid="uid://bxt7tvd2ty4ew" path="res://upgrade.tscn" id="3_po1c0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w5oqg"]
 size = Vector2(24, 24)
@@ -79,7 +81,19 @@ visible = false
 shape = SubResource("CircleShape2D_xpw21")
 disabled = true
 
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+texture_normal = ExtResource("3_0be8t")
+texture_pressed = ExtResource("3_0be8t")
+
+[node name="Upgrade" parent="." instance=ExtResource("3_po1c0")]
+visible = false
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
 [connection signal="area_entered" from="DamageArea" to="." method="_on_damage_area_area_entered"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

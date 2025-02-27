@@ -13,3 +13,4 @@ position = Vector2(30, -106)
 position = Vector2(-100, -94)
 
 [node name="OrangeT1" parent="." instance=ExtResource("3_6hyo7")]
+position = Vector2(0, -130)

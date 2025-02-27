@@ -10,6 +10,7 @@ var build_type
 @onready var mapo = $Track
 @onready var score_label = $UI/HUD/NewGame/Label
 @onready var enemies_left_label = $UI/HUD/EnemiesLeft/EnemiesLeftLabel
+@onready var enemy_spawn = $EnemySpawn
 var enemybar = 5
 var score = ScoreTracker.enemies_killed
 var wave = 1
@@ -20,6 +21,8 @@ var paused = false
 @onready var pause = $UI/Pause
 var built = false
 var coins = 10
+@onready var reaa=false
+var waiting = false
 
 
 
@@ -39,6 +42,10 @@ func _physics_process(_delta):
 	
 func update_money():
 	coins = coins +1
+func money2():
+	coins = coins +2
+func money3():
+	coins = coins +3
 	
 
 func update_enemy_bar():
@@ -53,6 +60,7 @@ func update_enemy_bar():
 		
 
 func _ready():
+	get_tree().paused =  true
 	coins 
 	map_node = get_node("Map1")
 	tower_node = get_node("tower")
@@ -143,3 +151,14 @@ func game_over():
 		var game_scene = load("res://game_over.tscn").instantiate()
 		add_child(game_scene)
 		queue_free()
+
+
+func _on_texture_button_pressed():
+	await get_tree().create_timer(1).timeout
+	enemy_spawn.reay=true
+	reaa=true
+	get_tree().paused =  false
+	$UI/TextureButton.hide()
+
+	
+

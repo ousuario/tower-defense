@@ -53,7 +53,7 @@ animations = [{
 [node name="IceBlast" type="Area2D" groups=["ice"]]
 script = ExtResource("1_vuw41")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["ice"]]
+[node name="Co1" type="CollisionShape2D" parent="." groups=["ice"]]
 shape = SubResource("CircleShape2D_eymg5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

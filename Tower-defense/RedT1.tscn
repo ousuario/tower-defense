@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://RedT1.gd" id="1_ouuxv"]
 [ext_resource type="Texture2D" uid="uid://desamat1cwb4t" path="res://Player.png" id="2_if7ps"]
-[ext_resource type="Texture2D" uid="uid://da87lulpx4fps" path="res://UI/pkay.png" id="3_e7j33"]
-[ext_resource type="Texture2D" uid="uid://bubc8ollnn27h" path="res://UI/pkayselected.png" id="4_nyo6n"]
+[ext_resource type="Texture2D" uid="uid://by7sr8uk3t7uo" path="res://eh.png" id="3_taw2j"]
+[ext_resource type="PackedScene" uid="uid://bxt7tvd2ty4ew" path="res://upgrade.tscn" id="4_i4y2c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_st08m"]
 size = Vector2(24, 24)
@@ -70,12 +70,14 @@ shape = SubResource("CircleShape2D_2vujv")
 wait_time = 0.5
 
 [node name="TextureButton" type="TextureButton" parent="."]
-offset_left = -23.0
-offset_top = -5.0
-offset_right = 27.0
-offset_bottom = 19.0
-texture_normal = ExtResource("3_e7j33")
-texture_pressed = ExtResource("4_nyo6n")
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+texture_normal = ExtResource("3_taw2j")
+
+[node name="Upgrade" parent="." instance=ExtResource("4_i4y2c")]
+visible = false
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
